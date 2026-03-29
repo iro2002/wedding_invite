@@ -14,12 +14,12 @@ const WeddingInvite = ({ lang = 'si' }) => {
   const text = {
     si: {
       together: "දෙමව්පියන්ගේ ආශිර්වාදය සමඟින්,",
-      request: "ඔවුන්ගේ විවාහ මංගල්‍යයට සහභාගී වන මෙන් ගෞරවයෙන් ආරාධනා කරමු",
+      request: "විවාහ මංගල්‍යයට සහභාගී වන මෙන් ගෞරවයෙන් ආරාධනා කරමු",
       days: "දින", hours: "පැය", mins: "මිනිත්තු", secs: "තත්පර",
       ceremony: "පෝරුවේ චාරිත්‍ර",
       date: "2026 අප්‍රේල් 19 • පෙ.ව. 9:00",
-      hotel: "ගෝල් ෆේස් හෝටලය",
-      address: "නො. 2, ගාලු පාර, කොළඹ 03, ශ්‍රී ලංකාව",
+      hotel: "Galle Face Hotel",
+      address: "No 2, Galle Road, Colombo 03, Sri Lanka",
       rsvpBtn: "කරුණාකර පැමිණීම තහවුරු කරන්න",
       rsvpThanks: "ස්තූතියි! ඔබගේ පැමිණීම අපි ආදරයෙන් බලාපොරොත්තු වෙමු.",
       namePlaceholder: "සම්පූර්ණ නම",
@@ -27,7 +27,7 @@ const WeddingInvite = ({ lang = 'si' }) => {
       guest2: "දෙදෙනෙක් සහභාගී වේ",
       decline: "සහභාගී වීමට නොහැක",
       send: "යවන්න",
-      open: "විවෘත කරන්න",
+      open: "Open",
       and: "සහ"
     },
     en: {

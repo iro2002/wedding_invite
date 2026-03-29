@@ -7,12 +7,12 @@ const Charithra = ({ lang = 'si' }) => {
     si: {
       order: "චාරිත‍්‍ර පෙළගැස්ම",
       title: "පෝරුවේ චාරිත්‍ර",
-      footer: "* වේලාවන් ආසන්න වන අතර සුබ නැකැත් අනුව වෙනස් විය හැක."
+
     },
     en: {
       order: "Order of Events",
       title: "Poruwa Charithra",
-      footer: "* Times are approximate and subject to auspicious alignments."
+
     }
   };
 
