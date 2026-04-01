@@ -1,149 +1,162 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import bgImage from '../assets/poruwa.jpg';
 
-const Charithra = ({ lang = 'si' }) => {
-  const [activeStep, setActiveStep] = useState(0);
+const Charithra = ({ lang = 'si', onBack }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Trigger entrance animations on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const text = {
     si: {
-      order: "චාරිත‍්‍ර පෙළගැස්ම",
-      title: "පෝරුවේ චාරිත්‍ර",
-
+      title: "මංගල චාරිත්‍ර",
+      subtitle: "අපගේ විශේෂ දිනයේ සටහන",
+      backBtn: "ආපසු",
     },
     en: {
-      order: "Order of Events",
-      title: "Poruwa Charithra",
-
+      title: "Wedding Itinerary",
+      subtitle: "The flow of our special day",
+      backBtn: "Back",
     }
   };
 
   const t = text[lang];
 
-  const rituals = {
-    en: [
-      {
-        id: 0, time: '9:00 AM', title: 'Arrival of the Couple', sinhalaTitle: 'Paminima',
-        description: 'The groom and his family arrive first, welcomed by the bride’s brother. Shortly after, the bride is escorted by her family, accompanied by traditional Kandyan dancers and drummers.'
-      },
-      {
-        id: 1, time: '9:25 AM', title: 'Ascending the Poruwa', sinhalaTitle: 'Poruwata Nagima',
-        description: 'At the auspicious time (Nakath), Kasun and Sanduni step onto the Poruwa (a beautifully decorated wooden platform), leading with their right foot to signify a blessed and prosperous beginning.'
-      },
-      {
-        id: 2, time: '9:40 AM', title: 'Exchange of Rings', sinhalaTitle: 'Mudu Maaru Kirima',
-        description: 'The couple exchanges rings to symbolize their love and commitment. The groom also presents the bride with a white cloth, a promise to take care of her for the rest of their lives.'
-      },
-      {
-        id: 3, time: '9:55 AM', title: 'Tying the Sacred Thread', sinhalaTitle: 'Pirith Nool Bendeema',
-        description: 'The bride’s uncle ties the couple’s pinky fingers together with a golden sacred thread (Pirith Nool) and pours holy water over their hands, legally and spiritually binding them together.'
-      },
-      {
-        id: 4, time: '10:15 AM', title: 'Honoring the Parents', sinhalaTitle: 'Bulath Huruweema',
-        description: 'The couple offers sheaves of betel leaves to their parents and elders. This deeply emotional ritual is a gesture of immense gratitude for their love, guidance, and upbringing.'
-      },
-      {
-        id: 5, time: '10:30 AM', title: 'Stepping Down & Blessings', sinhalaTitle: 'Poruwen Basima',
-        description: 'Supported by the groom’s family, the couple steps down from the Poruwa. A fresh coconut is cleft in two to dispel any evil spirits, followed by girls singing the Jayamangala Gatha to bless the marriage.'
-      }
-    ],
+  // Traditional timeline events
+  const timeline = {
     si: [
-      {
-        id: 0, time: 'පෙ.ව. 9:00', title: 'පැමිණීම', sinhalaTitle: 'Paminima',
-        description: 'පළමුවෙන්ම මනාලයා සහ ඔහුගේ පවුලේ අය පැමිණෙන අතර, මනාලියගේ පවුලේ අය සාම්ප්‍රදායික උඩරට නැටුම් සහ බෙර වාදන මැද ඇයව කැඳවාගෙන එති.'
-      },
-      {
-        id: 1, time: 'පෙ.ව. 9:25', title: 'පෝරුවට නැගීම', sinhalaTitle: 'Poruwata Nagima',
-        description: 'සුබ නැකතින් කසුන් සහ සඳුනි පෝරුවට ගොඩවේ. මෙය නව සහ සෞභාග්‍යමත් ජීවිතයක ආරම්භය සනිටුහන් කරයි.'
-      },
-      {
-        id: 2, time: 'පෙ.ව. 9:40', title: 'මුදු මාරු කිරීම', sinhalaTitle: 'Mudu Maaru Kirima',
-        description: 'සිය ආදරය හා කැපවීම සංකේතවත් කරමින් යුවළ මුදු මාරු කරති. ඉන්පසු මනාලයා විසින් මනාලියට සුදු රෙදි කඩක් පිළිගන්වයි.'
-      },
-      {
-        id: 3, time: 'පෙ.ව. 9:55', title: 'පිරිත් නූල් බැඳීම', sinhalaTitle: 'Pirith Nool Bendeema',
-        description: 'විවාහයේ නෛතික හා අධ්‍යාත්මික බැඳීම සනිටුහන් කරමින් මාමා විසින් යුවළගේ සුලැඟිලි පිරිත් නූලකින් ගැටගසා පැන් වත් කරයි.'
-      },
-      {
-        id: 4, time: 'පෙ.ව. 10:15', title: 'බුලත් හුරු දීම', sinhalaTitle: 'Bulath Huruweema',
-        description: 'තරුණ යුවළ සිය දෙමව්පියන්ට සහ වැඩිහිටියන්ට බුලත් හුරු දී නමස්කාර කරමින් ඔවුන්ට සිය කෘතඥතාව දක්වති.'
-      },
-      {
-        id: 5, time: 'පෙ.ව. 10:30', title: 'පෝරුවෙන් බැසීම', sinhalaTitle: 'Poruwen Basima',
-        description: 'ආශිර්වාද මැද යුවළ පෝරුවෙන් බසින අතර ජයමංගල ගාථා ගායනා කෙරේ. නරක දෝෂ දුරු කිරීම සඳහා පොල් ගෙඩියක් බිඳීම සිදුකෙරේ.'
-      }
+      { time: "පෙ.ව. 08:30", title: "අමුත්තන් පිළිගැනීම", desc: "ගාලු මුවදොර හෝටලයේදී" },
+      { time: "පෙ.ව. 09:00", title: "පෝරුවේ චාරිත්‍ර", desc: "සුබ නැකතින් පෝරුවට නැගීම" },
+      { time: "පෙ.ව. 10:15", title: "විවාහ ලියාපදිංචිය", desc: "නීත්‍යානුකූලව අත්සන් තැබීම" },
+      { time: "ප.ව. 12:30", title: "දිවා භෝජන සංග්‍රහය", desc: "ආදරණීයයන් සමඟින් දිවා ආහාරය" },
+      { time: "ප.ව. 03:30", title: "පිටත්ව යාම", desc: "නව ජීවිතයක ඇරඹුම" }
+    ],
+    en: [
+      { time: "08:30 AM", title: "Welcome & Arrival", desc: "At The Galle Face Hotel" },
+      { time: "09:00 AM", title: "Poruwa Ceremony", desc: "Traditional rituals begin" },
+      { time: "10:15 AM", title: "Registration", desc: "Signing of the marriage register" },
+      { time: "12:30 PM", title: "Wedding Reception", desc: "Lunch and celebrations" },
+      { time: "03:30 PM", title: "Going Away", desc: "Beginning of a new chapter" }
     ]
   };
 
-  const activeRituals = rituals[lang];
+  const currentTimeline = timeline[lang];
 
   return (
-    <div className="min-h-screen bg-stone-100 flex items-center justify-center p-4 md:p-8 font-serif relative w-full pt-12 md:pt-8">
-      <div className="relative max-w-xl w-full bg-[#FDFBF7] px-6 py-12 md:p-14 overflow-hidden rounded-sm">
+    <div className="h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center p-2 sm:p-4 md:p-8 font-serif relative overflow-hidden">
+
+      {/* Main Card Container */}
+      <div
+        className={`relative w-full max-w-xl h-full md:h-[850px] overflow-hidden rounded-lg shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+
+        {/* Frosted Glass Overlay */}
+        <div className="absolute inset-0 bg-[#FAFAF8]/10 backdrop-blur-sm z-0"></div>
 
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <span className="text-amber-500 text-3xl block mb-4">🪷</span>
-          <h2 className="text-amber-700 tracking-[0.2em] text-sm md:text-xs uppercase mb-3 font-semibold">{t.order}</h2>
-          <h1 className="text-4xl md:text-5xl text-[#11322A]" style={{ fontFamily: 'Georgia, serif' }}>
+        <div className="pt-10 pb-6 px-6 md:pt-14 md:pb-8 text-center shrink-0 relative z-20 bg-gradient-to-b from-[#FAFAF8]/80 to-transparent">
+          {/* Decorative Top Arch */}
+          <div className="w-16 h-8 mx-auto border-t border-l border-r border-[#D4AF37]/80 rounded-t-full mb-4"></div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#0B132B] mb-2 font-light tracking-wide drop-shadow-sm" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t.title}
           </h1>
-          <div className="w-24 h-[1px] bg-amber-300 mx-auto mt-6"></div>
+          <p className="text-[#D4AF37] font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">{t.subtitle}</p>
         </div>
 
-        {/* Interactive Timeline Container */}
-        <div className="relative border-l-2 border-amber-200 ml-4 md:ml-8">
-          {activeRituals.map((ritual, index) => {
-            const isActive = activeStep === index;
+        {/* Scrollable Timeline Section */}
+        <div className="flex-1 overflow-y-auto no-scrollbar px-6 md:px-12 pb-24 relative z-10">
 
-            return (
-              <div key={ritual.id} className="mb-10 ml-8 md:ml-12 relative group">
+          <div className="relative max-w-sm mx-auto mt-4">
+            {/* The Vertical Golden Line */}
+            <div className="absolute left-[15px] md:left-[19px] top-4 bottom-4 w-[1px] bg-gradient-to-b from-[#D4AF37]/20 via-[#D4AF37] to-[#D4AF37]/20"></div>
 
-                <span
-                  className={`absolute -left-[41px] md:-left-[57px] flex items-center justify-center w-8 h-8 rounded-full border-4 border-[#FDFBF7] transition-colors duration-300 cursor-pointer shadow-sm
-                    ${isActive ? 'bg-amber-500' : 'bg-[#11322A] group-hover:bg-amber-400'}`}
-                  onClick={() => setActiveStep(isActive ? -1 : index)}
-                >
-                  <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-[#11322A]' : 'bg-white'}`}></div>
-                </span>
-
+            {/* Timeline Items */}
+            <div className="space-y-8 md:space-y-12">
+              {currentTimeline.map((item, index) => (
                 <div
-                  className={`bg-white border outline outline-1 transition-all duration-300 cursor-pointer overflow-hidden
-                    ${isActive
-                      ? 'border-transparent outline-amber-400 shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
-                      : 'border-gray-100 outline-transparent hover:outline-amber-200 hover:shadow-md'
-                    }`}
-                  onClick={() => setActiveStep(isActive ? -1 : index)}
+                  key={index}
+                  className="timeline-item flex items-start opacity-0"
+                  style={{ animationDelay: `${0.3 + (index * 0.2)}s` }}
                 >
-                  <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-2">
-                    <div>
-                      <h3 className="text-lg md:text-xl text-[#11322A] font-medium leading-snug">{ritual.title}</h3>
-                      <p className="text-amber-600 text-xs md:text-sm italic mt-1 font-sans">{ritual.sinhalaTitle}</p>
-                    </div>
-                    <div className="text-gray-500 text-xs md:text-sm font-semibold tracking-widest uppercase whitespace-nowrap">
-                      {ritual.time}
-                    </div>
+                  {/* Timeline Node/Dot */}
+                  <div className="relative shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center mt-0.5">
+                    <div className="absolute inset-0 bg-[#D4AF37]/20 rounded-full animate-pulse-slow"></div>
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-[#D4AF37] rounded-full border-2 border-[#FAFAF8] shadow-sm relative z-10"></div>
                   </div>
 
-                  <div
-                    className={`px-5 md:px-6 transition-all duration-500 ease-in-out
-                      ${isActive ? 'max-h-64 pb-6 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
-                  >
-                    <div className="h-[1px] w-full bg-gray-100 mb-4"></div>
-                    <p className={`text-gray-600 leading-relaxed text-sm md:text-base ${lang === 'si' ? 'font-sans' : ''}`}>
-                      {ritual.description}
+                  {/* Timeline Content */}
+                  <div className="ml-4 md:ml-6 flex-1 pt-1 md:pt-2">
+                    <span className="inline-block px-2 py-0.5 border border-[#D4AF37]/40 text-[#D4AF37] text-[9px] md:text-[10px] uppercase tracking-widest rounded-sm mb-2">
+                      {item.time}
+                    </span>
+                    <h3 className="text-lg md:text-xl text-[#0B132B] font-medium mb-1 drop-shadow-sm" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs md:text-sm leading-relaxed">
+                      {item.desc}
                     </p>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
 
-              </div>
-            );
-          })}
+          {/* Bottom Decoration */}
+          <div className="w-12 h-[1px] bg-[#D4AF37]/50 mx-auto mt-12 md:mt-16"></div>
         </div>
 
-        <div className={`mt-16 text-center text-gray-400 italic text-sm ${lang === 'si' ? 'font-sans' : ''}`}>
-          {t.footer}
+        {/* Floating Back Button (To return to main invite) */}
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 px-6 py-2.5 bg-[#0B132B]/90 backdrop-blur text-[#D4AF37] text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full border border-[#D4AF37]/30 shadow-lg hover:bg-[#152042] hover:scale-105 transition-all duration-300"
+          >
+            {t.backBtn}
+          </button>
+        )}
+
+        {/* Elegant Background Watermark (Initials) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#D4AF37] opacity-[0.03] text-[250px] md:text-[350px] font-serif pointer-events-none select-none overflow-hidden" style={{ fontFamily: 'Playfair Display, serif', lineHeight: '1' }}>
+          A&N
         </div>
 
       </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+        
+        /* Entrance animation for the timeline items */
+        @keyframes slideInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .timeline-item {
+          animation: slideInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Subtle glow pulse for the nodes */
+        @keyframes pulseSlow {
+          0%, 100% { transform: scale(1); opacity: 0.5; }
+          50% { transform: scale(1.3); opacity: 0.8; }
+        }
+        .animate-pulse-slow {
+          animation: pulseSlow 3s ease-in-out infinite;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
     </div>
   );
 };
