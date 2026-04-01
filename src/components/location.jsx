@@ -11,11 +11,11 @@ const Location = ({ lang = 'si', onBack }) => {
 
   const text = {
     si: {
-      title: "උත්සව සභාව",
-      subtitle: "අපගේ විශේෂ දිනය සමරන ස්ථානය",
-      hotel: "ගාලු මුවදොර හෝටලය",
-      address: "අංක 2, ගාලු පාර, කොළඹ 03",
-      country: "ශ්‍රී ලංකාව",
+      title: "",
+      subtitle: "",
+      hotel: "The Galle Face Hotel",
+      address: "No 2, Galle Road, Colombo 03",
+      country: "Sri Lanka",
       mapBtn: "සිතියම බලන්න",
       backBtn: "ආපසු",
     },
@@ -39,10 +39,10 @@ const Location = ({ lang = 'si', onBack }) => {
 
   return (
     <div className="h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center p-2 sm:p-4 md:p-8 font-serif relative overflow-hidden">
-      
+
       {/* Main Card Container */}
       <div className={`relative w-full max-w-xl h-full md:h-[850px] overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-        
+
         {/* Header Section */}
         <div className="pt-10 pb-4 px-6 md:pt-14 md:pb-6 text-center shrink-0 relative z-20">
           <div className="w-16 h-8 mx-auto border-t border-l border-r border-[#D4AF37]/50 rounded-t-full mb-4"></div>
@@ -54,7 +54,7 @@ const Location = ({ lang = 'si', onBack }) => {
 
         {/* Scrollable Content Section */}
         <div className="flex-1 flex flex-col items-center justify-start px-6 md:px-12 pb-24 overflow-y-auto no-scrollbar relative z-10 w-full">
-          
+
           {/* Animated Location Pin */}
           <div className="relative w-12 h-12 md:w-16 md:h-16 mb-4 mt-2 shrink-0">
             <div className="absolute inset-0 bg-[#D4AF37]/20 rounded-full animate-ping-slow"></div>
@@ -75,13 +75,13 @@ const Location = ({ lang = 'si', onBack }) => {
           {/* Elegant Map Frame */}
           <div className="w-full max-w-sm h-48 md:h-64 rounded-t-full border-t-2 border-l-2 border-r-2 border-b border-[#D4AF37] p-1.5 md:p-2 mb-6 md:mb-8 relative shrink-0 shadow-inner bg-white">
             <div className="w-full h-full rounded-t-full overflow-hidden relative grayscale-[30%] contrast-125 sepia-[20%] opacity-90 transition-all duration-500 hover:grayscale-0 hover:sepia-0 hover:opacity-100">
-              <iframe 
+              <iframe
                 src={mapEmbedUrl}
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Wedding Venue Map"
                 className="absolute inset-0 pointer-events-none sm:pointer-events-auto" // Disables map interaction on mobile to allow smooth page scrolling
@@ -91,9 +91,9 @@ const Location = ({ lang = 'si', onBack }) => {
 
           {/* Action Buttons */}
           <div className="flex flex-col gap-3 w-full max-w-[280px] md:max-w-sm shrink-0">
-            <a 
-              href={mapsLink} 
-              target="_blank" 
+            <a
+              href={mapsLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3 md:py-3.5 bg-[#D4AF37] text-white text-center hover:bg-[#c49f2d] transition-all duration-300 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs rounded-sm shadow-md flex items-center justify-center gap-2 hover:scale-[1.02]"
             >
