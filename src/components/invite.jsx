@@ -119,8 +119,8 @@ const WeddingInvite = ({ lang = 'si', setLang }) => {
   }, []);
 
   return (
-    // Use min-h-screen to ensure full page layout horizontally/vertically without locking vertical scrolling
-    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
+    // Removed min-h-[100dvh] to prevent massive gaps between stacked cards on tall screens
+    <div className="w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-0 px-2 sm:px-4 md:px-8 font-serif relative">
 
       {/* Audio Element */}
       <audio ref={audioRef} loop>
@@ -129,7 +129,7 @@ const WeddingInvite = ({ lang = 'si', setLang }) => {
       </audio>
 
       {/* Responsive Container */}
-      <div className="relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col">
+      <div className="relative w-full max-w-xl h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col">
 
         {/* --- FLOWER DROP ANIMATION LAYER --- */}
         {isOpen && (

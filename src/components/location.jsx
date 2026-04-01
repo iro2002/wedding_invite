@@ -33,15 +33,15 @@ const Location = ({ lang = 'si', onBack }) => {
   const t = text[lang];
 
   // Google Maps directions link
-  const mapsLink = "https://maps.app.goo.gl/YourMapLinkHere"; // Replace with actual shortlink if needed
+  const mapsLink = "https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUqGggBEC4YChgLGK8BGMcBGLEDGIAEGJgFGJkFMgYIABBFGDkyGggBEC4YChgLGK8BGMcBGLEDGIAEGJgFGJkFMgsIAhAAGAoYCxiABDILCAMQABgKGAsYgAQyEQgEEC4YChgLGK8BGMcBGIAEMgsIBRAAGAoYCxiABDILCAYQABgKGAsYgAQyCwgHEAAYChgLGIAEMgsICBAAGAoYCxiABNIBCDY3ODJqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=lk&sa=X&geocode=KdntzbM4WeI6MYDBMdDNLMAv&daddr=2+Galle+Rd,+Colombo+00300"; // Replace with actual shortlink if needed
   // Google Maps Embed URL
   const mapEmbedUrl = "https://maps.google.com/maps?q=Galle%20Face%20Hotel,%20Colombo&t=&z=16&ie=UTF8&iwloc=&output=embed";
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
+    <div className="w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-0 px-2 sm:px-4 md:px-8 font-serif relative">
 
       {/* Main Card Container */}
-      <div className={`relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+      <div className={`relative w-full max-w-xl h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
         {/* Header Section */}
         <div className="pt-10 pb-4 px-6 md:pt-14 md:pb-6 text-center shrink-0 relative z-20">

@@ -46,11 +46,11 @@ const Charithra = ({ lang = 'si', onBack }) => {
   const currentTimeline = timeline[lang];
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
+    <div className="w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-0 px-2 sm:px-4 md:px-8 font-serif relative">
 
       {/* Main Card Container */}
       <div
-        className={`relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        className={`relative w-full max-w-xl h-auto overflow-hidden rounded-lg shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         style={{
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
