@@ -119,8 +119,8 @@ const WeddingInvite = ({ lang = 'si', setLang }) => {
   }, []);
 
   return (
-    // 'overflow-hidden' on the main screen wrapper ensures no native browser scrolling happens, guaranteeing a single-screen feel.
-    <div className="h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center p-2 sm:p-4 md:p-8 font-serif relative overflow-hidden">
+    // Use min-h-screen to ensure full page layout horizontally/vertically without locking vertical scrolling
+    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
 
       {/* Audio Element */}
       <audio ref={audioRef} loop>
@@ -129,7 +129,7 @@ const WeddingInvite = ({ lang = 'si', setLang }) => {
       </audio>
 
       {/* Responsive Container */}
-      <div className="relative w-full max-w-xl h-full md:h-[850px] overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl">
+      <div className="relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col">
 
         {/* --- FLOWER DROP ANIMATION LAYER --- */}
         {isOpen && (
@@ -179,7 +179,7 @@ const WeddingInvite = ({ lang = 'si', setLang }) => {
         </button>
 
         {/* Inner Card Content */}
-        <div className={`absolute inset-0 flex flex-col items-center justify-start p-6 pt-10 md:p-12 overflow-y-auto no-scrollbar transition-opacity duration-1000 delay-500 z-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`relative w-full flex-1 flex flex-col items-center justify-start p-6 pt-10 md:p-12 transition-opacity duration-1000 delay-500 z-10 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
 
           {/* Elegant Arched Image Frame */}
           <div className="w-32 h-40 md:w-48 md:h-56 shrink-0 rounded-t-full border-t-2 border-l-2 border-r-2 border-[#D4AF37] p-1.5 md:p-2 mb-4 md:mb-8 bg-white/50 backdrop-blur-sm relative z-30">

@@ -46,11 +46,11 @@ const Charithra = ({ lang = 'si', onBack }) => {
   const currentTimeline = timeline[lang];
 
   return (
-    <div className="h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center p-2 sm:p-4 md:p-8 font-serif relative overflow-hidden">
+    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
 
       {/* Main Card Container */}
       <div
-        className={`relative w-full max-w-xl h-full md:h-[850px] overflow-hidden rounded-lg shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        className={`relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         style={{
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
@@ -72,8 +72,8 @@ const Charithra = ({ lang = 'si', onBack }) => {
           <p className="text-[#D4AF37] font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">{t.subtitle}</p>
         </div>
 
-        {/* Scrollable Timeline Section */}
-        <div className="flex-1 overflow-y-auto no-scrollbar px-6 md:px-12 pb-24 relative z-10">
+        {/* Timeline Section */}
+        <div className="w-full flex-1 px-6 md:px-12 pb-24 relative z-10">
 
           <div className="relative max-w-sm mx-auto mt-4">
             {/* The Vertical Golden Line */}

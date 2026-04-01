@@ -38,10 +38,10 @@ const Location = ({ lang = 'si', onBack }) => {
   const mapEmbedUrl = "https://maps.google.com/maps?q=Galle%20Face%20Hotel,%20Colombo&t=&z=16&ie=UTF8&iwloc=&output=embed";
 
   return (
-    <div className="h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center p-2 sm:p-4 md:p-8 font-serif relative overflow-hidden">
+    <div className="min-h-[100dvh] w-full bg-[#E5E7EB] flex flex-col items-center justify-center py-10 px-2 sm:p-4 md:p-8 font-serif relative">
 
       {/* Main Card Container */}
-      <div className={`relative w-full max-w-xl h-full md:h-[850px] overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+      <div className={`relative w-full max-w-xl min-h-[850px] h-auto overflow-hidden rounded-lg bg-[#FAFAF8] shadow-2xl flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
         {/* Header Section */}
         <div className="pt-10 pb-4 px-6 md:pt-14 md:pb-6 text-center shrink-0 relative z-20">
@@ -52,8 +52,8 @@ const Location = ({ lang = 'si', onBack }) => {
           <p className="text-[#D4AF37] text-[10px] md:text-xs uppercase tracking-[0.2em]">{t.subtitle}</p>
         </div>
 
-        {/* Scrollable Content Section */}
-        <div className="flex-1 flex flex-col items-center justify-start px-6 md:px-12 pb-24 overflow-y-auto no-scrollbar relative z-10 w-full">
+        {/* Content Section */}
+        <div className="flex-1 flex flex-col items-center justify-start px-6 md:px-12 pb-24 relative z-10 w-full">
 
           {/* Animated Location Pin */}
           <div className="relative w-12 h-12 md:w-16 md:h-16 mb-4 mt-2 shrink-0">
